@@ -63,3 +63,5 @@ model_config:
       glue: []
     max_task_num: 256
     predict_attributes: false
+    freeze_backbone: true
+    freeze_bert: true

@@ -41,6 +41,10 @@ class UniT(BaseModel):
         # build the base model (based on DETR)
         self.unit_base_model = UniTBaseModel(self.config.base_args)
 
+        if self.config.freeze_backbone:
+            for param in self.unit_base_model.parameters():
+                param.requires_grad = False
+
         def keep_only_backbone_params(model_state_dict):
             keys = list(model_state_dict.keys())
             for k in keys:
@@ -70,6 +74,11 @@ class UniT(BaseModel):
         self.bert_model = TransformerEncoder(self.config.base_args.bert_config)
         detr_hidden_dim = self.config.base_args.decoder_hidden_dim
         bert_config = deepcopy(self.bert_model.config)
+
+        if self.config.freeze_bert:
+            for param in self.bert_model.parameters():
+                param.requires_grad = False
+
         self.bert_projection = nn.Linear(bert_config.hidden_size, detr_hidden_dim)
         self.bert_pos_projection = nn.Linear(bert_config.hidden_size, detr_hidden_dim)
 
