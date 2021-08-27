@@ -41,10 +41,6 @@ class UniT(BaseModel):
         # build the base model (based on DETR)
         self.unit_base_model = UniTBaseModel(self.config.base_args)
 
-        if self.config.freeze_backbone:
-            for param in self.unit_base_model.parameters():
-                param.requires_grad = False
-
         def keep_only_backbone_params(model_state_dict):
             keys = list(model_state_dict.keys())
             for k in keys:

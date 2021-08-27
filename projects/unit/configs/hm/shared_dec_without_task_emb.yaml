@@ -50,30 +50,23 @@ training:
   lr_scheduler: true
   lr_ratio: 0.1
   batch_size: 64
-  max_updates: 500000
-  checkpoint_interval: 10000
-  evaluation_interval: 10000
+  max_updates: 5000
+  checkpoint_interval: 500
+  evaluation_interval: 500
   dataset_size_proportional_sampling: false
   early_stop:
     enabled: false
-    criteria: vqa2/vqa_accuracy
+    criteria: hatefule_memes/accuracy
     minimize: false
   stdout_capture: false
   find_unused_parameters: true
 
 multitasking:
-  enabled: false
+  enabled: true
   type: ratios
   params:
     sampling_ratios:
-      detection_coco: 0.2
-      detection_visual_genome: 0.07
-      visual_entailment: 0.12
-      vqa2: 0.26
-      glue_qnli: 0.1
-      glue_mnli_mismatched: 0.1
-      glue_qqp: 0.1
-      glue_sst2: 0.05
+      hateful_memes: 1.0
 
 checkpoint:
   max_to_keep: 5
