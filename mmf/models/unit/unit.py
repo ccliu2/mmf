@@ -30,7 +30,7 @@ class UniT(BaseModel):
 
     @classmethod
     def config_path(cls):
-        return "configs/models/unit/defaults.yaml"
+        return "configs/models/unit/hateful_memes.yaml"
 
     # Backward compatibility for code from older mmbt
     @classmethod

@@ -1,3 +1,5 @@
+pip-wheel-metadata/*
+.python-version
 *.log
 *.err
 *.pyc
@@ -29,3 +31,4 @@ eggs/
 *.so
 *-checkpoint.ipynb
 !tests/data
+venv/*
